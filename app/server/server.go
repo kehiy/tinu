@@ -6,14 +6,14 @@ import (
 	"github.com/kehiy/tinu/model"
 )
 
-func getAll(ctx *fiber.Ctx) error {
+func getAll(c *fiber.Ctx) error {
 	tinus, err := model.GetAll()
 	if err != nil {
-		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message":"internal server error" + err.Error(),
 		})
 	}
-	return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"data":tinus,
 	})
 }
