@@ -98,6 +98,21 @@ func updateTinu(c *fiber.Ctx) error {
 	})
 }
 
+func deleteTinu(c *fiber.Ctx) error {
+	id := c.Params("id")
+	err := model.DeleteTinu(id)
+	if err != nil{
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message":"Internal server error",
+		})
+	}
+
+	return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+		"message":"deleted successfully",
+		"id":id,
+	})
+}
+
 func SetupAndListen() {
 	router := fiber.New()
 
@@ -106,11 +121,13 @@ func SetupAndListen() {
 		AllowHeaders: "Origin, Content-Type, Accept",
 	}))
 
+	router.Get("/:id", tinu)
+
 	router.Get("/tinu", getAll)
 	router.Get("/tinu/:id", getOne)
-	router.Get("/:id", tinu)
 	router.Post("/tinu", createTinu)
 	router.Patch("/tinu", updateTinu)
+	router.Delete("/tinu/:id", deleteTinu)
 
 	router.Listen(":3000")
 }
