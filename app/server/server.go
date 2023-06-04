@@ -64,8 +64,15 @@ func tinu(c *fiber.Ctx) error {
 			"message":"internal server error",
 		})
 	}
+	tinu.Clicked += 1
+	err = model.UpdateTinu(tinu)
+	if err != nil{
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message":"internal server error",
+		})
+	}
 
-	return c.Status(fiber.StatusPermanentRedirect).Redirect(tinu.URL)
+	return c.Redirect(tinu.URL, fiber.StatusTemporaryRedirect)
 }
 
 func SetupAndListen() {
