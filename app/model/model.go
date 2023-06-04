@@ -16,7 +16,7 @@ type Tinu struct{
 
 func Setup() {
 	// set your own data:
-	dsn := "host=luca.iran.liara.ir user=root password=jXU5nAEA8ln70yvEybX8CNKs dbname=tinu port=34930 sslmode=disable"
+	dsn := "host=alfie.iran.liara.ir user=root password=abtarQh4EUqW9wrs9Fsx3gnK dbname=postgres port=31632 sslmode=disable"
 
 	var err error
 	db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})

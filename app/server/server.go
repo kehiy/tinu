@@ -14,9 +14,7 @@ func getAll(c *fiber.Ctx) error {
 			"message":"internal server error" + err.Error(),
 		})
 	}
-	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"data":tinus,
-	})
+	return c.Status(fiber.StatusOK).JSON(tinus)
 }
 
 func getOne(c *fiber.Ctx) error {
@@ -112,7 +110,7 @@ func deleteTinu(c *fiber.Ctx) error {
 	err = model.DeleteTinu(tinu.ID)
 	if err != nil{
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"message":"Internal server error \n" + err.Error(),
+			"message":"Internal server error " + err.Error(),
 		})
 	}
 
