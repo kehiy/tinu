@@ -50,7 +50,7 @@ func createTinu(c *fiber.Ctx) error {
 		})
 	}
 
-	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+	return c.Status(fiber.StatusCreated).JSON(fiber.Map{
 		"message":"OK",
 		"data":tinu,
 	})
@@ -75,6 +75,29 @@ func tinu(c *fiber.Ctx) error {
 	return c.Redirect(tinu.URL, fiber.StatusTemporaryRedirect)
 }
 
+func updateTinu(c *fiber.Ctx) error {
+	c.Accepts("application/json")
+	var tinu model.Tinu
+	err := c.BodyParser(&tinu)
+	if err != nil{
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message":"Internal server error",
+		})
+	}
+
+	err = model.UpdateTinu(tinu)
+	if err != nil{
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message":"Internal server error",
+		})
+	}
+
+	return c.Status(fiber.StatusCreated).JSON(fiber.Map{
+		"message":"updated successfully",
+		"data":tinu,
+	})
+}
+
 func SetupAndListen() {
 	router := fiber.New()
 
@@ -87,6 +110,7 @@ func SetupAndListen() {
 	router.Get("/tinu/:id", getOne)
 	router.Get("/:id", tinu)
 	router.Post("/tinu", createTinu)
+	router.Patch("/tinu", updateTinu)
 
 	router.Listen(":3000")
 }
