@@ -4,6 +4,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/kehiy/tinu/model"
+	"github.com/kehiy/tinu/utils"
 )
 
 func getAll(c *fiber.Ctx) error {
@@ -41,6 +42,7 @@ func createTinu(c *fiber.Ctx) error {
 		})
 	}
 
+	tinu.ID = utils.GenerateId()
 	err = model.CreateTinu(tinu)
 	if err != nil{
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
@@ -54,6 +56,18 @@ func createTinu(c *fiber.Ctx) error {
 	})
 }
 
+func tinu(c *fiber.Ctx) error {
+	id := c.Params("id")
+	tinu, err := model.GetOne(id)
+	if err != nil{
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message":"internal server error",
+		})
+	}
+
+	return c.Status(fiber.StatusPermanentRedirect).Redirect(tinu.URL)
+}
+
 func SetupAndListen() {
 	router := fiber.New()
 
@@ -64,6 +78,7 @@ func SetupAndListen() {
 
 	router.Get("/tinu", getAll)
 	router.Get("/tinu/:id", getOne)
+	router.Get("/:id", tinu)
 	router.Post("/tinu", createTinu)
 
 	router.Listen(":3000")
