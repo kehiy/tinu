@@ -1,6 +1,8 @@
 package model
 
 import (
+	"fmt"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -15,5 +17,15 @@ type Tinu struct{
 func Setup() {
 	// set your own data:
 	dsn := "host=luca.iran.liara.ir user=root password=jXU5nAEA8ln70yvEybX8CNKs dbname=tinu port=34930 sslmode=disable"
-	gorm.Open(postgres.Open(dsn), &gorm.Config{})
+
+	var err error
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		panic(err)
+	}
+
+	err = db.AutoMigrate(&Tinu{})
+	if err != nil {
+		fmt.Println(err)
+	}
 }
