@@ -18,6 +18,20 @@ func getAll(c *fiber.Ctx) error {
 	})
 }
 
+func getOne(c *fiber.Ctx) error {
+	id := c.Params("id")
+	tinu, err := model.GetOne(id)
+	if err != nil{
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message":"internal server error",
+		})
+	}
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"data":tinu,
+	})
+}
+
+
 func SetupAndListen() {
 	router := fiber.New()
 
@@ -26,7 +40,8 @@ func SetupAndListen() {
 		AllowHeaders: "Origin, Content-Type, Accept",
 	}))
 
-	router.Get("/tinus", getAll)
+	router.Get("/tinu", getAll)
+	router.Get("/tinu/:id", getOne)
 
 	router.Listen(":3000")
 }
