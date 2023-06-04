@@ -1,11 +1,12 @@
 <script>
     import Card from "./Card.svelte";
+    export let tinu
 </script>
 
 <Card>
-    <p>Tinu: https://localhost:3000/{"40c24a8c6d354d4f"}</p>
-    <p>url: {"url"}</p>
-    <p>Clicked: {"clicked"}</p>
+    <p>Tinu: https://localhost:3000/{tinu.id}</p>
+    <p>url: {tinu.url}</p>
+    <p>Clicked: {tinu.clicked}</p>
     <button class="update">Update</button>
     <button class="delete">Delete</button>
 </Card>

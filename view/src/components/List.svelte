@@ -11,5 +11,5 @@
 </script>
 
 {#each tinus as tinu}
-    <Item />
+    <Item tinu={tinu} />
 {/each}
