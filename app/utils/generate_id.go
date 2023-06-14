@@ -30,6 +30,7 @@ func getMacAddr() (addr string) {
 	return
 }
 
+// this is the logic of MushId => https://github.com/kehiy/mushid
 func GenerateId() string {
 	Time := strconv.Itoa(int(time.Now().UnixNano()))
 	Pid := os.Getpid()
