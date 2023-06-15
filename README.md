@@ -128,7 +128,9 @@ response:
     "message": "Internal server error ERROR: column \"f1f118fbe0c41caa\" does not exist (SQLSTATE 42703)" // we fix it ASAP
 }
 ```
-
+## redirect
+also this is the short urls:
+`localhost:3000/:id`
 
 # Options:
 * add new tinu (done) (still changing)
