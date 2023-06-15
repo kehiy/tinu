@@ -8,7 +8,31 @@ NOTE: this repo still in developing all of stuffs can change rapidly!
 `
 
 # API docs:
-* soon...
+
+## getAll
+
+endPoint:
+`localhost:3000/tinu`
+
+method: `GET`
+
+request:
+```json
+{}
+```
+
+response:
+```json
+[
+    {
+        "id": "cd983cd8e98ae3f1",
+        "url": "https://google.com",
+        "clicked": 0
+    },
+    //.....
+]
+```
+
 
 
 # Options:
