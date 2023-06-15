@@ -55,6 +55,31 @@ response:
 }
 ```
 
+## addTinu
+
+endPoint:
+`localhost:3000/tinu`
+
+method: `POST`
+
+request:
+```json
+{
+    "url":"https://example.com"
+}
+```
+
+response:
+```json
+{
+    "data": {
+        "id": "f1f118fbe0c41caa",
+        "url": "https://example.com",
+        "clicked": 0
+    },
+    "message": "OK"
+}
+```
 
 
 # Options:
