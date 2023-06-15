@@ -32,6 +32,28 @@ response:
     //.....
 ]
 ```
+## getOne
+
+endPoint:
+`localhost:3000/tinu/:id`
+
+method: `GET`
+
+request:
+```json
+{}
+```
+
+response:
+```json
+{
+    "data": {
+        "id": "cd983cd8e98ae3f1",
+        "url": "https://google.com",
+        "clicked": 0
+    }
+}
+```
 
 
 
