@@ -6,6 +6,10 @@ simple URL shortener with Golang and fiber
 `
 NOTE: this repo still in developing all of stuffs can change rapidly!
 `
+## useage:
+`cd app`
+`go run main.go`
+
 
 # API docs:
 
