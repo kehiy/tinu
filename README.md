@@ -81,6 +81,34 @@ response:
 }
 ```
 
+## update
+
+endPoint:
+`localhost:3000/tinu`
+
+method: `PATCH`
+
+request:
+```json
+{
+    "id":"f1f118fbe0c41caa",
+    "url":"https://amazon.com"
+}
+```
+
+response:
+```json
+{
+    "data": {
+        "id": "f1f118fbe0c41caa",
+        "url": "https://amazon.com",
+        "clicked": 0
+    },
+    "message": "updated successfully"
+}
+```
+
+
 
 # Options:
 * add new tinu (done) (still changing)
