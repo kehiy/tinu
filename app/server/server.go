@@ -120,6 +120,7 @@ func deleteTinu(c *fiber.Ctx) error {
 	})
 }
 
+
 func SetupAndListen() {
 	router := fiber.New()
 

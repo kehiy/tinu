@@ -35,7 +35,7 @@ func UpdateTinu(tinu Tinu) error {
 }
 
 func DeleteTinu(id string) error {
-	tx := db.Unscoped().Delete(&Tinu{}, id)
+	tx := db.Unscoped().Delete(&Tinu{}, "id=?", id)
 	return tx.Error
 }
 
