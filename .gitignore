@@ -1,3 +1,4 @@
 /view/package-lock.json
 /view/node_modules
 /app/.env
+.env

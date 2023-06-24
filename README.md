@@ -122,14 +122,15 @@ method: `DELETE`
 request:
 ```json
 {
-    "id":"f1f118fbe0c41caa"
+    "id":"8f6ac8fea4eb45e6"
 }
 ```
 
 response:
 ```json
 {
-    "message": "Internal server error ERROR: column \"f1f118fbe0c41caa\" does not exist (SQLSTATE 42703)" // we fix it ASAP
+    "id": "8f6ac8fea4eb45e6",
+    "message": "deleted successfully"
 }
 ```
 ## redirect
@@ -138,6 +139,6 @@ also this is the short urls:
 
 # Options:
 * add new tinu (done) (still changing)
-* delete tinu   (bug) (still changing)
+* delete tinu  (done) (still changing)
 * update tinu  (done) (still changing)
 * use a tinu   (done) (still changing)
