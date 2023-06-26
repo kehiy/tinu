@@ -10,7 +10,8 @@ import (
 )
 
 var db *gorm.DB
-type Tinu struct{
+
+type Tinu struct {
 	ID      string `json:"id" gorm:"primaryKey"`
 	URL     string `json:"url" gorm:"not null"`
 	Clicked uint64 `json:"clicked"`
@@ -18,18 +19,18 @@ type Tinu struct{
 
 func loadEnv() (string, string, string, string, string) {
 	err := godotenv.Load()
-    if err != nil {
-        fmt.Println("Error loading .env file:", err)
-        os.Exit(1)
-    }
+	if err != nil {
+		fmt.Println("Error loading .env file:", err)
+		os.Exit(1)
+	}
 
-    // Get the value of an environment variable and print it
-    dbHost := os.Getenv("DBHOST")
-    dbPort := os.Getenv("DBPORT")
-    dbName := os.Getenv("DBNAME")
-    dbPass := os.Getenv("DBPASS")
-    dbUser := os.Getenv("DBUSER")
-    return dbHost, dbPort, dbName, dbPass, dbUser
+	// Get the value of an environment variable and print it
+	dbHost := os.Getenv("DBHOST")
+	dbPort := os.Getenv("DBPORT")
+	dbName := os.Getenv("DBNAME")
+	dbPass := os.Getenv("DBPASS")
+	dbUser := os.Getenv("DBUSER")
+	return dbHost, dbPort, dbName, dbPass, dbUser
 }
 
 func Setup() {

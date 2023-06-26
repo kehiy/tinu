@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/kehiy/tinu/model"
+	"github.com/kehiy/tinu/models"
 	"github.com/kehiy/tinu/server"
 )
 
