@@ -6,7 +6,7 @@ import (
 	"github.com/kehiy/tinu/utils"
 )
 
-func GetAll(c *fiber.Ctx) error {
+func GetAllTinus(c *fiber.Ctx) error {
 	tinus, err := model.GetAllTinus()
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
@@ -16,7 +16,7 @@ func GetAll(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(tinus)
 }
 
-func GetOne(c *fiber.Ctx) error {
+func GetOneTinu(c *fiber.Ctx) error {
 	id := c.Params("id")
 	tinu, err := model.GetOneTinu(id)
 	if err != nil {
