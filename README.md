@@ -142,3 +142,7 @@ also this is the short urls:
 * delete tinu  (done) (still changing)
 * update tinu  (done) (still changing)
 * use a tinu   (done) (still changing)
+* user signup (developing)
+* user login (developing)
+* delete account (developing)
+* update account (developing)
