@@ -1,9 +1,9 @@
 package utils
 
 import (
-	"github.com/kehiy/mushid"
+	gonanoid "github.com/matoous/go-nanoid/v2"
 )
 
-func GenerateId() string {
-	return MushId.New()
+func GenerateId() (string, error) {
+	return gonanoid.New()
 }

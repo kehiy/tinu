@@ -39,7 +39,12 @@ func CreateTinu(c *fiber.Ctx) error {
 		})
 	}
 
-	tinu.ID = utils.GenerateId()
+	tinu.ID, err = utils.GenerateId()
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Internal server error",
+		})
+	}
 	err = model.CreateTinu(tinu)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
