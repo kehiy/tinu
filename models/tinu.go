@@ -1,6 +1,6 @@
 package model
 
-func GetAll() ([]Tinu, error) {
+func GetAllTinus() ([]Tinu, error) {
 	var tinus []Tinu
 	// search for all tinus in db
 	tx := db.Find(&tinus)
@@ -11,7 +11,7 @@ func GetAll() ([]Tinu, error) {
 	return tinus, nil
 }
 
-func GetOne(id string) (Tinu, error) {
+func GetOneTinu(id string) (Tinu, error) {
 	var tinu Tinu
 	// search tinu with id in db
 	tx := db.Where("id = ?", id).First(&tinu)
