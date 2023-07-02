@@ -7,8 +7,27 @@ simple URL shortener with Golang and fiber
 NOTE: this repo still in developing all of stuffs can change rapidly!
 `
 ## useage:
-`cd app`
-`go run main.go`
+
+1:
+```bash
+go install ./...
+```
+
+2:
+```bash
+go run main.go
+```
+### Docker:
+
+1:
+```bash
+docker build -t tinu .
+```
+
+2:
+```bash
+docker run -p 3000:3000 tinu
+```
 
 # api docs:
 [DOCs](./docs/document.md)
