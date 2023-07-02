@@ -14,9 +14,7 @@ func SetupAndListen() {
 		AllowHeaders: "Origin, Content-Type, Accept",
 	}))
 
-	router.Get("/tinu", controllers.GetAllTinus)
 	router.Get("/:id", controllers.Tinu)
-	router.Get("/tinu/:id", controllers.GetOneTinu)
 	router.Post("/tinu", controllers.CreateTinu)
 	router.Patch("/tinu", controllers.UpdateTinu)
 	router.Delete("/tinu", controllers.DeleteTinu)

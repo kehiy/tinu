@@ -6,29 +6,6 @@ import (
 	"github.com/kehiy/tinu/utils"
 )
 
-func GetAllTinus(c *fiber.Ctx) error {
-	tinus, err := model.GetAllTinus()
-	if err != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"message": "internal server error" + err.Error(),
-		})
-	}
-	return c.Status(fiber.StatusOK).JSON(tinus)
-}
-
-func GetOneTinu(c *fiber.Ctx) error {
-	id := c.Params("id")
-	tinu, err := model.GetOneTinu(id)
-	if err != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"message": "internal server error",
-		})
-	}
-	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"data": tinu,
-	})
-}
-
 func CreateTinu(c *fiber.Ctx) error {
 	c.Accepts("application/json")
 	var tinu model.Tinu

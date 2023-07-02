@@ -12,29 +12,6 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-func GetAllUser(c *fiber.Ctx) error {
-	users, err := model.GetAllUsers()
-	if err != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"message": "internal server error" + err.Error(),
-		})
-	}
-	return c.Status(fiber.StatusOK).JSON(users)
-}
-
-func GetOneUser(c *fiber.Ctx) error {
-	id := c.Params("id")
-	user, err := model.GetOneUser(id)
-	if err != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"message": "internal server error",
-		})
-	}
-	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"data": user,
-	})
-}
-
 func CreateUser(c *fiber.Ctx) error {
 	c.Accepts("application/json")
 	var user model.User
