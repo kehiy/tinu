@@ -93,11 +93,11 @@ func UserLogin(c *fiber.Ctx) error {
 			})
 		}
 
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+		return c.Status(fiber.StatusOK).JSON(fiber.Map{
 			"token": signedToken,
 		})
 	} else {
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"message": "invalid password or email",
 		})
 	}
@@ -133,7 +133,7 @@ func DeleteUser(c *fiber.Ctx) error {
 		})
 	}
 
-	return c.Status(fiber.StatusCreated).JSON(fiber.Map{
+	return c.Status(fiber.StatusNoContent).JSON(fiber.Map{
 		"message": "user was deleted successfully",
 	})
 }

@@ -51,7 +51,7 @@ func Tinu(c *fiber.Ctx) error {
 		})
 	}
 
-	return c.Redirect(tinu.URL, fiber.StatusPermanentRedirect)
+	return c.Redirect(tinu.URL, fiber.StatusMovedPermanently)
 }
 
 func UpdateTinu(c *fiber.Ctx) error {
@@ -95,7 +95,7 @@ func DeleteTinu(c *fiber.Ctx) error {
 		})
 	}
 
-	return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+	return c.Status(fiber.StatusNoContent).JSON(fiber.Map{
 		"message": "deleted successfully",
 		"id":      tinu.ID,
 	})
