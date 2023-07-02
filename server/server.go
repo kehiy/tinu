@@ -4,6 +4,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/kehiy/tinu/controllers"
+	"github.com/kehiy/tinu/middlewares"
 )
 
 func SetupAndListen() {
@@ -14,10 +15,16 @@ func SetupAndListen() {
 		AllowHeaders: "Origin, Content-Type, Accept",
 	}))
 
+	// tinu
 	router.Get("/:id", controllers.Tinu)
-	router.Post("/tinu", controllers.CreateTinu)
-	router.Patch("/tinu", controllers.UpdateTinu)
-	router.Delete("/tinu", controllers.DeleteTinu)
+	router.Post("/tinu", middlewares.Authenticate, controllers.CreateTinu)
+	router.Patch("/tinu", middlewares.Authenticate, controllers.UpdateTinu)
+	router.Delete("/tinu", middlewares.Authenticate, controllers.DeleteTinu)
+
+	// user
+	router.Post("/login", controllers.UserLogin)
+	router.Post("/signup", controllers.CreateUser)
+	router.Delete("/user/delete", controllers.DeleteUser)
 
 	router.Listen(":3000")
 }

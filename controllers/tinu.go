@@ -8,6 +8,8 @@ import (
 
 func CreateTinu(c *fiber.Ctx) error {
 	c.Accepts("application/json")
+	userID := c.Locals("userID").(string)
+
 	var tinu model.Tinu
 	err := c.BodyParser(&tinu)
 	if err != nil {
@@ -15,6 +17,8 @@ func CreateTinu(c *fiber.Ctx) error {
 			"message": "Internal server error",
 		})
 	}
+
+	tinu.UserID = userID
 
 	tinu.ID, err = utils.GenerateId()
 	if err != nil {
@@ -63,6 +67,20 @@ func UpdateTinu(c *fiber.Ctx) error {
 			"message": "Internal server error",
 		})
 	}
+	userID := c.Locals("userID").(string)
+
+	dbtinu, err := model.GetOneTinu(tinu.ID)
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Internal server error",
+		})
+	}
+
+	if dbtinu.UserID != userID {
+		return c.Status(fiber.StatusForbidden).JSON(fiber.Map{
+			"message": "you have no access",
+		})
+	}
 
 	err = model.UpdateTinu(tinu)
 	if err != nil {
@@ -85,6 +103,20 @@ func DeleteTinu(c *fiber.Ctx) error {
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message": "Internal server error",
+		})
+	}
+	userID := c.Locals("userID").(string)
+
+	dbtinu, err := model.GetOneTinu(tinu.ID)
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Internal server error",
+		})
+	}
+	
+	if dbtinu.UserID != userID {
+		return c.Status(fiber.StatusForbidden).JSON(fiber.Map{
+			"message": "you have no access",
 		})
 	}
 
