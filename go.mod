@@ -3,18 +3,14 @@ module github.com/kehiy/tinu
 go 1.20
 
 require (
+	github.com/joho/godotenv v1.5.1
+	github.com/matoous/go-nanoid/v2 v2.0.0
 	gorm.io/driver/postgres v1.5.2
 	gorm.io/gorm v1.25.0
 )
 
 require (
-	github.com/gofiber/utils v0.0.10 // indirect
-	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/google/uuid v1.3.0 // indirect
-	github.com/gorilla/schema v1.1.0 // indirect
-	github.com/joho/godotenv v1.5.1 // indirect
-	github.com/kehiy/mushid v1.0.7 // indirect
-	github.com/matoous/go-nanoid/v2 v2.0.0 // indirect
 	github.com/mattn/go-runewidth v0.0.14 // indirect
 	github.com/philhofer/fwd v1.1.2 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
@@ -25,7 +21,6 @@ require (
 
 require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
-	github.com/gofiber/fiber v1.14.6
 	github.com/gofiber/fiber/v2 v2.46.0
 	github.com/golang-jwt/jwt/v5 v5.0.0
 	github.com/jackc/pgpassfile v1.0.0 // indirect
@@ -39,7 +34,7 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.47.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
-	golang.org/x/crypto v0.8.0 // indirect
+	golang.org/x/crypto v0.8.0
 	golang.org/x/sys v0.8.0 // indirect
 	golang.org/x/text v0.9.0 // indirect
 )
