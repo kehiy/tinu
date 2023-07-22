@@ -159,3 +159,7 @@ response:
 ### redirect
 also this is the short urls:
 `localhost:3000/:id`
+
+### check url
+you can check where this short url going like this:
+`localhost:3000/c/:id`
