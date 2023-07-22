@@ -4,9 +4,9 @@ simple URL shortener with Golang and fiber
 ## Tinu stands for => tiny URL
 
 `
-NOTE: this repo still in developing all of stuffs can change rapidly!
+NOTE: this repo is still in development all of the stuff can change rapidly!
 `
-## useage:
+## usage:
 
 1:
 ```bash
@@ -41,3 +41,4 @@ docker run -p 3000:3000 tinu
 * user login       (done)
 * delete account   (done)
 * update account   (done)
+* check Url safety (done)
