@@ -17,6 +17,7 @@ func SetupAndListen() {
 
 	// tinu
 	router.Get("/:id", controllers.Tinu)
+	router.Get("/c/:id", controllers.CheckTinu)
 	router.Post("/tinu", middlewares.Authenticate, controllers.CreateTinu)
 	router.Patch("/tinu", middlewares.Authenticate, controllers.UpdateTinu)
 	router.Delete("/tinu", middlewares.Authenticate, controllers.DeleteTinu)

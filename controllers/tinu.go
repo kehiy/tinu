@@ -41,6 +41,7 @@ func CreateTinu(c *fiber.Ctx) error {
 
 func Tinu(c *fiber.Ctx) error {
 	id := c.Params("id")
+	
 	tinu, err := model.GetOneTinu(id)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
@@ -130,5 +131,20 @@ func DeleteTinu(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusNoContent).JSON(fiber.Map{
 		"message": "deleted successfully",
 		"id":      tinu.ID,
+	})
+}
+
+func CheckTinu(c *fiber.Ctx) error {
+	id := c.Params("id")
+
+	tinu, err := model.GetOneTinu(id)
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "internal server error",
+		})
+	}
+
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"dest":tinu.URL,
 	})
 }
