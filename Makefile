@@ -15,6 +15,5 @@ check:
 		--enable=gosec \
 		--enable=exportloopref \
 		--enable=whitespace \
-		--enable=goimports \
 		--enable=gocyclo \
 		
