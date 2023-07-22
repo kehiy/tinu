@@ -41,7 +41,7 @@ func CreateTinu(c *fiber.Ctx) error {
 
 func Tinu(c *fiber.Ctx) error {
 	id := c.Params("id")
-	
+
 	tinu, err := model.GetOneTinu(id)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
@@ -116,7 +116,7 @@ func DeleteTinu(c *fiber.Ctx) error {
 			"message": "Internal server error",
 		})
 	}
-	
+
 	if dbtinu.UserID != userID {
 		return c.Status(fiber.StatusForbidden).JSON(fiber.Map{
 			"message": "you have no access",
@@ -147,6 +147,6 @@ func CheckTinu(c *fiber.Ctx) error {
 	}
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"dest":tinu.URL,
+		"dest": tinu.URL,
 	})
 }
