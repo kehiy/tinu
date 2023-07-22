@@ -20,7 +20,7 @@ func CreateTinu(c *fiber.Ctx) error {
 
 	tinu.UserID = userID
 
-	tinu.ID, err = utils.GenerateId()
+	tinu.ID, err = utils.GenerateID()
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message": "Internal server error",
@@ -47,7 +47,9 @@ func Tinu(c *fiber.Ctx) error {
 			"message": "internal server error",
 		})
 	}
-	tinu.Clicked += 1
+
+	tinu.Clicked++
+
 	err = model.UpdateTinu(tinu)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
@@ -113,7 +115,7 @@ func DeleteTinu(c *fiber.Ctx) error {
 			"message": "Internal server error",
 		})
 	}
-	
+
 	if dbtinu.UserID != userID {
 		return c.Status(fiber.StatusForbidden).JSON(fiber.Map{
 			"message": "you have no access",
