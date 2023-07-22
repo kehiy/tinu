@@ -48,7 +48,9 @@ func Tinu(c *fiber.Ctx) error {
 			"message": "internal server error",
 		})
 	}
-	tinu.Clicked += 1
+
+	tinu.Clicked++
+
 	err = model.UpdateTinu(tinu)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{

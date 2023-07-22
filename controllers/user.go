@@ -96,11 +96,11 @@ func UserLogin(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusOK).JSON(fiber.Map{
 			"token": signedToken,
 		})
-	} else {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"message": "invalid password or email",
-		})
 	}
+
+	return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+		"message": "invalid password or email",
+	})
 }
 
 func DeleteUser(c *fiber.Ctx) error {
@@ -124,9 +124,9 @@ func DeleteUser(c *fiber.Ctx) error {
 	}
 
 	claims := parsedToken.Claims.(jwt.MapClaims)
-	userId := claims["id"].(string)
+	userID := claims["id"].(string)
 
-	error := model.DeleteUser(userId)
+	error := model.DeleteUser(userID)
 	if error != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message": "",
