@@ -20,7 +20,7 @@ func CreateTinu(c *fiber.Ctx) error {
 
 	tinu.UserID = userID
 
-	tinu.ID, err = utils.GenerateId()
+	tinu.ID, err = utils.GenerateID()
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message": "Internal server error",

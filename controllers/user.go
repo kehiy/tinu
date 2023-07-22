@@ -37,7 +37,7 @@ func CreateUser(c *fiber.Ctx) error {
 	passWord, _ := bcrypt.GenerateFromPassword([]byte(user.PassWord), 10)
 	user.PassWord = string(passWord)
 
-	user.ID, err = utils.GenerateId()
+	user.ID, err = utils.GenerateID()
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message": "Internal server error",
@@ -126,8 +126,8 @@ func DeleteUser(c *fiber.Ctx) error {
 	claims := parsedToken.Claims.(jwt.MapClaims)
 	userID := claims["id"].(string)
 
-	error := model.DeleteUser(userID)
-	if error != nil {
+	err = model.DeleteUser(userID)
+	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message": "",
 		})

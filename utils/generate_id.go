@@ -4,6 +4,6 @@ import (
 	gonanoid "github.com/matoous/go-nanoid/v2"
 )
 
-func GenerateId() (string, error) {
+func GenerateID() (string, error) {
 	return gonanoid.New()
 }
