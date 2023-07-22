@@ -1,6 +1,8 @@
 package server
 
 import (
+	"log"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/kehiy/tinu/controllers"
@@ -26,5 +28,5 @@ func SetupAndListen() {
 	router.Post("/signup", controllers.CreateUser)
 	router.Delete("/user/delete", controllers.DeleteUser)
 
-	router.Listen(":3000")
+	log.Fatal(router.Listen(":3000"))
 }
