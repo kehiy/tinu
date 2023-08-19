@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/kehiy/tinu/models"
-	"github.com/kehiy/tinu/server"
+	model "github.com/kehiy/tinu/models"
+	server "github.com/kehiy/tinu/server"
 )
 
 func main() {

@@ -13,18 +13,18 @@ import (
 var db *gorm.DB
 
 type Tinu struct {
-	ID        string `json:"id" gorm:"primaryKey"`
-	URL       string `json:"url" gorm:"not null"`
+	ID        string `gorm:"primaryKey"        json:"id"`
+	URL       string `gorm:"not null"          json:"url"`
 	Clicked   uint64 `json:"clicked"`
-	UserID    string `json:"user_id" gorm:"foreignKey:UserID"`
+	UserID    string `gorm:"foreignKey:UserID" json:"user_id"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }
 
 type User struct {
-	ID       string `json:"id" gorm:"primaryKey"`
-	Email    string `json:"email" gorm:"not null;unique_index"`
-	PassWord string `json:"password" gorm:"not null"`
+	ID       string `gorm:"primaryKey"            json:"id"`
+	Email    string `gorm:"not null;unique_index" json:"email"`
+	PassWord string `gorm:"not null"              json:"password"`
 	Tinus    []Tinu `json:"tinus"`
 }
 
@@ -47,7 +47,8 @@ func loadEnv() (string, string, string, string, string) {
 func Setup() {
 	dbHost, dbPort, dbName, dbPass, dbUser := loadEnv()
 	// set your own data:
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", dbHost, dbUser, dbPass, dbName, dbPort)
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable",
+		dbHost, dbUser, dbPass, dbName, dbPort)
 
 	var err error
 	db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})

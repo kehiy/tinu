@@ -6,10 +6,10 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v5"
-	// "github.com/joho/godotenv"
 	model "github.com/kehiy/tinu/models"
 	"github.com/kehiy/tinu/utils"
 	"golang.org/x/crypto/bcrypt"
+	// "github.com/joho/godotenv".
 )
 
 func CreateUser(c *fiber.Ctx) error {
@@ -116,11 +116,9 @@ func DeleteUser(c *fiber.Ctx) error {
 	}
 
 	if !parsedToken.Valid {
-		if err != nil {
-			return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
-				"message": "Unauthorized",
-			})
-		}
+		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+			"message": "Unauthorized",
+		})
 	}
 
 	claims := parsedToken.Claims.(jwt.MapClaims)
